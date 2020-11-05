@@ -14,9 +14,10 @@ RUN sudo apt-get install -y libgflags-dev \
 	&& sudo apt-get install -y librocksdb-dev
 
 RUN pip install python-rocksdb
+RUN pip install pytest
+
+WORKDIR rockdbtest
 
 COPY . .
 
-RUN python -m rocksdbdict
-
-CMD bash
+CMD python -m pytest
