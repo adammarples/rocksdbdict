@@ -93,26 +93,3 @@ class RocksdbDict:
 
     def __repr__(self):
         return f'RocksdbDict<{self.filepath}>'
-
-
-if __name__ == '__main__':
-        import tempfile
-
-        path = tempfile.gettempdir() / Path('rocksdbdict/test')
-        path.mkdir(parents=True)
-
-        db = RocksdbDict(path)
-        for x, y in ((1, None), ('3', '4')):
-            db[x] = y
-
-        db = RocksdbDict(path, read_only=True)
-        print(list(db.keys()))
-        print(list(db.values()))
-        print(list(db.items()))
-        print(1 in db)
-        print('3' in db)
-        print(3 in db)
-
-        import shutil
-        shutil.rmtree(path)
-
