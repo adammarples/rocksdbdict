@@ -18,7 +18,7 @@ readme = ''
 setup(
     long_description=readme,
     name='rocksdbdict',
-    version='0.1.0',
+    version='0.2.0',
     python_requires='==3.*,>=3.7.0',
     author='Adam Marples',
     author_email='adammarples@gmail.com',
@@ -28,4 +28,5 @@ setup(
     package_data={},
     install_requires=['python-rocksdb==0.*,>=0.7.0'],
     extras_require={"dev": ["dephell==0.*,>=0.8.3", "pytest==6.*,>=6.1.2"]},
+    download_url='https://github.com/adammarples/rocksdbdict/archive/0.2.0.tar.gz',
 )
