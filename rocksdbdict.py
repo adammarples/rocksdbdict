@@ -97,6 +97,9 @@ class RocksdbDict:
             count += 1
         return count
 
+    def __delitem__(self, key):
+        byteskey = self.encoder(key)
+        self.db.delete(byteskey)
 
     def __repr__(self):
         return f'RocksdbDict<{self.filepath}>'

@@ -79,5 +79,10 @@ def test_len(db):
     assert len(db) == 2
 
 
+def test_delete(db):
+    del db[1]
+    assert 1 not in db
+
+
 if __name__ == '__main__':
     pytest.main()
