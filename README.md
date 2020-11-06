@@ -51,7 +51,20 @@ for k, v in db.items():
 1 2
 a b
 ```
+#### Warning
 
+Rocksdb sorts items internally, so this dict will not be ordered according to insertion
+
+```python
+db = RocksdbDict('/path/to/db')
+db[0] = None
+db[3] = None
+db[2] = None
+db[1] = None
+
+list(db.keys())
+[0, 1, 2, 3]
+```
 #### Encoding
 
 Rocksdb takes bytes as keys and values so python objects are encoded as bytes, the default being to use pickle with the highest protocol, but custom encoders/decoders can be passed to the constructor
