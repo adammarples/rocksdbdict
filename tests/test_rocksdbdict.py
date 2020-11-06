@@ -75,5 +75,9 @@ def test_readonly_db_concurrent_access(readonly_db):
     assert list(futures) == [2]*10
 
 
+def test_len(db):
+    assert len(db) == 2
+
+
 if __name__ == '__main__':
     pytest.main()

@@ -89,5 +89,14 @@ class RocksdbDict:
         except KeyError:
             return False
 
+    def __len__(self):
+        count = 0
+        it = self.db.iterkeys()
+        it.seek_to_first()
+        for byteskey in it:
+            count += 1
+        return count
+
+
     def __repr__(self):
         return f'RocksdbDict<{self.filepath}>'
