@@ -52,6 +52,22 @@ True
 a b
 ```
 
+#### Encoding
+
+Rocksdb takes bytes as keys and values so python objects are encoded as bytes, the default being to use pickle with the highest protocol, but custom encoders/decoders can be passed to the constructor
+
+```python
+db = RocksdbDict('/path/to/db', encoder=pickle.loads, decoder=pickle.dumps)
+
+class A:
+    b = 4
+
+db['a'] = A()
+
+>>> db['a'].b
+4
+```
+
 #### Options
 
 Default options are provided, but all kwargs are passed directly through to the rocksdb.DB() constructor
@@ -89,6 +105,7 @@ with ThreadPoolExecutor(max_workers=10) as executor:
 >>> list(futures)
 [2, 2, 2]
 ```
+
 
 
 
