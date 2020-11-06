@@ -10,9 +10,6 @@ import pytest
 from rocksdbdict import RocksdbDict
 
 
-PATH = tempfile.gettempdir() / Path('rocksdbdict/test')
-
-
 @pytest.fixture
 def db():
     tempdir = tempfile.gettempdir() / Path('rocksdbdict/test')
