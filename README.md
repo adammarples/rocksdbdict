@@ -16,38 +16,38 @@ db = RocksdbDict('/path/to/db')
 
 ```python
 # set and get items like a dict
->>> db[1] = 2
->>> db[1]
+db[1] = 2
+db[1]
 2
 
->>> db['a'] = 'b'
->>> db['a']
+db['a'] = 'b'
+db['a']
 'b'
 
->>> db[100]
+db[100]
 Traceback (most recent call last):
   File "<input>", line 1, in <module>
 KeyError: 100
 
 # contains
->>> 1 in db
+1 in db
 True
 
 # default keys
->>> db.get(100, 9999)
+db.get(100, 9999)
 9999
 
 # keys is an iterator
->>> list(db.keys())
+list(db.keys())
 [1, 'a']
 
 # values is an iterator
->>> list(db.values())
+list(db.values())
 [2, 'b']
 
 # items is an iterator
->>> for k, v in db.items():
->>>     print(k, v)
+for k, v in db.items():
+    print(k, v)
 1 2
 a b
 ```
@@ -64,7 +64,7 @@ class A:
 
 db['a'] = A()
 
->>> db['a'].b
+db['a'].b
 4
 ```
 
@@ -102,7 +102,7 @@ db[1] = 2
 with ThreadPoolExecutor(max_workers=10) as executor:
    futures = executor.map(readonly_db.get, [1, 1, 1])
 
->>> list(futures)
+list(futures)
 [2, 2, 2]
 ```
 
