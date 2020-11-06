@@ -39,5 +39,14 @@ def test_contains(db):
     assert 2 not in db
 
 
+def test_default_keys(db):
+    result = db.get('3')
+    assert result == '4'
+    result = db.get('3', 'default')
+    assert result == '4'
+    result = db.get('not in dict', 'default')
+    assert result == 'default'
+
+
 if __name__ == '__main__':
     pytest.main()
