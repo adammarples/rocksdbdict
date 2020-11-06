@@ -57,7 +57,6 @@ class RocksdbDict:
             key, default = args
         else:
             raise ValueError(f'too many args to get (expected 1 or 2, got {nargs})')
-        print(nargs, key, default, [args])
         try:
             return self[key]
         except KeyError:
