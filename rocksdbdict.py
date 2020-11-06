@@ -22,7 +22,6 @@ class RocksdbDict:
             self,
             filepath,
             opts=None,
-            read_only=False,
             encoder=functools.partial(pickle.dumps, protocol=pickle.HIGHEST_PROTOCOL),
             decoder=pickle.loads,
             **kwargs
@@ -33,7 +32,7 @@ class RocksdbDict:
         except AttributeError:
             pass
         self.filepath = Path(filepath)
-        self.db = rocksdb.DB(filepath, opts, read_only=read_only, **kwargs)
+        self.db = rocksdb.DB(filepath, opts, **kwargs)
         self.encoder = encoder
         self.decoder = decoder
 
