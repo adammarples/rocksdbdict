@@ -96,6 +96,8 @@ db = RocksdbDict('/path/to/db', opts=opts)
 
 If read_only is set to True, multiple concurrent reads can be performed
 ```python
+from concurrent.futures import ThreadPoolExecutor
+
 db = RocksdbDict('/path/to/db')
 db[1] = 2
 
