@@ -61,25 +61,24 @@ class RocksdbDict:
         except KeyError:
             return default
 
-    def _keys_iterator(self):
-        it = self.db.iterkeys()
-        it.seek_to_first()
-        yield from it
-
     def items(self):
-        for byteskey in self._keys_iterator():
-            bytesvalue = self.db.get(byteskey)
+        it = self.db.iteritems()
+        it.seek_to_first()
+        for byteskey, bytesvalue in it:
             key, value = self.decoder(byteskey), self.decoder(bytesvalue)
             yield key, value
 
     def keys(self):
-        for byteskey in self._keys_iterator():
+        it = self.db.iterkeys()
+        it.seek_to_first()
+        for byteskey in it:
             key = self.decoder(byteskey)
             yield key
 
     def values(self):
-        for byteskey in self._keys_iterator():
-            bytesvalue = self.db.get(byteskey)
+        it = self.db.itervalues()
+        it.seek_to_first()
+        for bytesvalue in it:
             value = self.decoder(bytesvalue)
             yield value
 
