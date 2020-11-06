@@ -31,4 +31,5 @@ setup(
     install_requires=['python-rocksdb==0.*,>=0.7.0'],
     extras_require={"dev": ["dephell==0.*,>=0.8.3", "pytest==6.*,>=6.1.2"]},
     download_url=f'https://github.com/adammarples/rocksdbdict/archive/{VERSION}.tar.gz',
+    url='https://github.com/adammarples/rocksdbdict',
 )
