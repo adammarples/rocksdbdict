@@ -14,7 +14,7 @@ Inspired by and [sqlitedict](https://pypi.org/project/sqlitedict/) and [shelve](
 db = RocksdbDict('/path/to/db')
 ```
 
-```
+```python
 # set and get items like a dict
 >>> db[1] = 2
 >>> db[1]
