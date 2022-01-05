@@ -83,5 +83,9 @@ def test_delete(db):
     assert 1 not in db
 
 
+def test_iter(db):
+    assert tuple(iter(db)) == ((1, 2), ("3", "4"))
+
+
 if __name__ == "__main__":
     pytest.main()

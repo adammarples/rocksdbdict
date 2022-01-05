@@ -123,8 +123,7 @@ class RocksdbDict(MutableMapping):
         except KeyError:
             return False
 
-    def __iter__(self):
-        yield from self.db.items()
+    __iter__ = items
 
     def __len__(self):
         count = 0
