@@ -1,8 +1,8 @@
 import functools
 import pickle
-from collections import MutableMapping
+from collections.abc import MutableMapping
 from pathlib import Path
-from typing import Mapping, Any, Iterable, Union
+from typing import Any, Iterable, Mapping, Union
 
 import rocksdb
 
@@ -55,8 +55,8 @@ class RocksdbDict(MutableMapping):
         batch = rocksdb.WriteBatch()
         if __m:
             try:
-                for k in __m.keys():
-                    batch.put(self.encoder(k), self.encoder(__m[k]))
+                for k in __m.keys():  # type: ignore
+                    batch.put(self.encoder(k), self.encoder(__m[k]))  # type: ignore
             except AttributeError:
                 for k, v in __m:
                     batch.put(self.encoder(k), self.encoder(v))
@@ -85,7 +85,7 @@ class RocksdbDict(MutableMapping):
     def get(self, *args):
         nargs = len(args)
         if nargs == 1:
-            key, default = *args, None
+            key, default = *args, None  # type: ignore
         elif nargs == 2:
             key, default = args
         else:
@@ -108,8 +108,6 @@ class RocksdbDict(MutableMapping):
         for byteskey in it:
             key = self.decoder(byteskey)
             yield key
-
-    __iter__ = keys
 
     def values(self):
         it = self.db.itervalues()
