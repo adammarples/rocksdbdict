@@ -1,3 +1,5 @@
+![build](https://github.com/github/docs/actions/workflows/build.yml/badge.svg)
+
 #### Installation
 ```
 pip install rocksdbdict
