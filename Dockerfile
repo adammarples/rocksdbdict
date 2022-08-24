@@ -13,9 +13,10 @@ RUN sudo apt-get install -y libgflags-dev \
 	&& sudo apt-get install -y libsnappy-dev \
 	&& sudo apt-get install -y librocksdb-dev
 
+
+RUN pip install pytest
 COPY . .
 RUN pip install -e .
-RUN pip install pytest
 
 WORKDIR rockdbtest
 
