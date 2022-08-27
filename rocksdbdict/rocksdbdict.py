@@ -12,8 +12,8 @@ def default_opts():
     opts.create_if_missing = True
     opts.table_factory = rocksdb.BlockBasedTableFactory(
         filter_policy=rocksdb.BloomFilterPolicy(10),
-        block_cache=rocksdb.LRUCache(2 * (1024 ** 3)),
-        block_cache_compressed=rocksdb.LRUCache(500 * (1024 ** 2)),
+        block_cache=rocksdb.LRUCache(2 * (1024**3)),
+        block_cache_compressed=rocksdb.LRUCache(500 * (1024**2)),
     )
     return opts
 

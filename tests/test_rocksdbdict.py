@@ -87,5 +87,10 @@ def test_iter(db):
     assert tuple(iter(db)) == ((1, 2), ("3", "4"))
 
 
+def test_update(db):
+    db.update({0: 0})
+    assert db[0] == 0
+
+
 if __name__ == "__main__":
     pytest.main()
